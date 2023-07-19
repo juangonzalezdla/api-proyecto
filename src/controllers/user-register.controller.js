@@ -9,13 +9,13 @@ const userRegisterController = async (req, res) => {
   if (existingUserById) 
     return res
       .status(409)
-      .send('Ya existe un usuario con ese id registrado');
+      .send({ errors: ['Ya existe un usuario con ese id registrado'] });
 
   const existingUserByEmail = await UserModel.findOne({ email }).exec();
   if (existingUserByEmail) 
     return res
       .status(409)
-      .send('Ya existe un usuario con ese email registrado');
+      .send({ errors: ['Ya existe un usuario con ese email registrado'] });
 
   const hashedPassword = await hash(password, SALT);
   
