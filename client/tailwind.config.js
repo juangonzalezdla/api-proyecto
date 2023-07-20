@@ -5,7 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        azul: 'hsl(var(--azul))',
+        blanco: 'hsl(var(--blanco))',
+        negro: 'hsl(var(--negro))',
+        oscuro: 'hsl(var(--azul))',
+        'azul-palido': 'hsl(var(--azul-palido))',
+        'gris-claro': 'hsl(var(--gris-claro))',
+      }
+    },
   },
   plugins: [],
 }
