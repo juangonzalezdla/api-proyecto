@@ -9,7 +9,7 @@ const userRegisterController = async (req, res) => {
   if (existingUserById) 
     return res
       .status(409)
-      .send({ errors: ['Ya existe un usuario con ese id registrado'] });
+      .send( ['Ya existe un usuario con ese id registrado'] );
 
   const existingUserByEmail = await UserModel.findOne({ email }).exec();
   if (existingUserByEmail) 
