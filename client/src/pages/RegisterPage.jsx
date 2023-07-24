@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import Input from '../components/Input.jsx';
 
@@ -100,6 +100,12 @@ function ResgisterPage() {
             Registrarme
           </button>
 
+          <p className='mt-[20px] flex gap-2'>
+            ¿Ya tienes una cuenta? 
+            <Link to='/login' className='text-azul hover:underline'>
+              Iniciar sesión
+            </Link>
+          </p> 
         </form>
       </div>
     </div>
