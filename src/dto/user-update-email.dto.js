@@ -37,6 +37,6 @@ const userUpdateEmailDTO = (req, res, next) => {
     });
 
   next();
-}
+};
 
 export default userUpdateEmailDTO;

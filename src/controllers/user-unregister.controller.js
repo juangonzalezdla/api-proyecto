@@ -2,10 +2,10 @@ import UserModel from '../models/user.schema.js';
 import { compare } from 'bcrypt';
 
 const userUnregisterController = async (req, res) => {
-  const { id } = req;
+  const { user } = req;
   const { password } = req.body;
 
-  const existingUserById = await UserModel.findById(id).exec();
+  const existingUserById = await UserModel.findById(user.id).exec();
   if (!existingUserById) 
     return res.status(401).send({ errors: ['Usuario no autorizado'] });
 
@@ -16,6 +16,6 @@ const userUnregisterController = async (req, res) => {
   await existingUserById.deleteOne();
 
   return res.send('Usuario eliminado');
-}
+};
 
 export default userUnregisterController;

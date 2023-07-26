@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import connectDB from './db.js';
 import userRouter from './routes/user.routes.js';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 dotenv.config(); // Configuración de las variables de entorno
 
@@ -15,6 +16,8 @@ app.use(cors({
   origin: FRONTEND_URL
 }));
 app.use(express.json());
+app.use(cookieParser());
+
 // Routes
 app.use('/user', userRouter);
 

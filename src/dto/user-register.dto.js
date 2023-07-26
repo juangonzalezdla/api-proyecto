@@ -46,6 +46,6 @@ const userRegisterDTO = (req, res, next) => {
     });
 
   next();
-}
+};
 
 export default userRegisterDTO;

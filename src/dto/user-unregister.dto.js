@@ -35,6 +35,6 @@ const userUnregisterDTO = (req, res, next) => {
     });
 
   next();
-}
+};
 
 export default userUnregisterDTO;

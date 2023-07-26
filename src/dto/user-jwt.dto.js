@@ -1,27 +1,21 @@
-import { jwtVerify } from 'jose';
+import jwt from 'jsonwebtoken';
 
 const userJWTDTO = async (req, res, next) => {
-  const { authorization } = req.headers;
+  const { token } = req.cookies;
 
-  if (!authorization) return res.status(401).send({ errors: ['Usuario no autorizado'] });
+  if (!token) return res
+    .status(401)
+    .send({ errors: ['Usuario no autorizado'] });
 
-  const jwt = authorization.split(' ')[1];
-  if (!jwt) return res.status(401).send({ errors: ['Usuario no autorizado'] });
+  jwt.verify(token, process.env.JWT_PRIVATE_KEY, (error, user) => {
+      if (error) return res
+        .status(401)
+        .send({ errors: ['Usuario no autorizado'] });
 
-  try {
-    const encoder = new TextEncoder();
-    const { payload } = await jwtVerify(
-        jwt,
-        encoder.encode(process.env.JWT_PRIVATE_KEY)
-    );
+      req.user = user;
 
-    req.id = payload.id;
-
-    next();
-
-  } catch (error) {
-    return res.status(401).send({ errors: ['Usuario no autorizado'] });
-  }
+      next();
+  });
 }
 
 export default userJWTDTO;

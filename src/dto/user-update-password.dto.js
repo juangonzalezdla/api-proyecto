@@ -33,6 +33,6 @@ const userUpdatePasswordDTO = (req, res, next) => {
     });
 
   next();
-}
+};
 
 export default userUpdatePasswordDTO;

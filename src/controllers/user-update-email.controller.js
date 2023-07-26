@@ -2,10 +2,10 @@ import UserModel from '../models/user.schema.js';
 import { compare } from 'bcrypt';
 
 const userUpdateEmailController = async (req, res) => {
-  const { id } = req;
+  const { user } = req;
   const { email, password } = req.body;
 
-  const existingUserById = await UserModel.findById(id).exec();
+  const existingUserById = await UserModel.findById(user.id).exec();
   if (!existingUserById) 
     return res.status(401).send({ errors: ['Usuario no autorizado'] });
 
@@ -18,6 +18,6 @@ const userUpdateEmailController = async (req, res) => {
   await existingUserById.save();
 
   return res.send('Email del usuario actualizado');
-}
+};
 
 export default userUpdateEmailController;

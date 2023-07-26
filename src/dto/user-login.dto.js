@@ -37,6 +37,6 @@ const userLoginDTO = (req, res, next) => {
     );
 
   next();
-}
+};
 
 export default userLoginDTO;

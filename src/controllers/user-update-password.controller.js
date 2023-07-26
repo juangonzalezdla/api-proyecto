@@ -3,10 +3,10 @@ import { compare, hash } from 'bcrypt';
 import { SALT } from '../constants/salt.js';
 
 const userUpdatePasswordController = async (req, res) => {
-  const { id } = req;
+  const { user } = req;
   const { oldPassword, newPassword } = req.body;
 
-  const existingUserById = await UserModel.findById(id).exec();
+  const existingUserById = await UserModel.findById(user.id).exec();
   if (!existingUserById) 
     return res.status(401).send({ errors: ['Usuario no autorizado'] });
 
@@ -20,6 +20,6 @@ const userUpdatePasswordController = async (req, res) => {
   await existingUserById.save();
 
   return res.send('Contraseña del usuario actualizada');
-}
+};
 
 export default userUpdatePasswordController;

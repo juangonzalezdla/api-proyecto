@@ -34,6 +34,6 @@ const userUpdateDataDTO = (req, res, next) => {
     });
 
   next();
-}
+};
 
 export default userUpdateDataDTO;
