@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function LoginPage() {
   const { 
@@ -8,11 +9,18 @@ function LoginPage() {
     handleSubmit, 
     formState: { errors } 
   } = useForm();
-  const { signin, errors: signinErrors } = useAuth();
+  const { signin, errors: signinErrors, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
     signin(data);
   });
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/profile');
+    }
+  }, [isAuthenticated]);
 
   return (
     <div className='w-[100vw] h-[calc(100vh-100px)] flex flex-col justify-center items-center'>
