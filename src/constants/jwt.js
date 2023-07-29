@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 
+// Funcion que crea o firma el token
 const createAccessToken = (payload) => {
   return new Promise((resolve, reject) => {
     jwt.sign(

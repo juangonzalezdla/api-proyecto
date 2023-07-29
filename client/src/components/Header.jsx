@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 
 function Header() {
-  const { isAuthenticated, logout, user } = useAuth();
-  console.log(user)
-
+  const { isAuthenticated, logout} = useAuth();
+  
   return (
     <header className="bg-azul py-[0] px-[3rem]">
       <nav className="w-[100%] max-w-[1400px] my-[o] mx-[auto] h-[70px] flex flex-row justify-between items-center">
